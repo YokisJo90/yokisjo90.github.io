@@ -9,8 +9,8 @@
         // Senarai link utama dan alternatif jika link berubah
         let links = [
             "https://istqmhtv.net/Expired/silarenew",
-            "https://backup-link1.com", // Ganti dengan link backup
-            "https://backup-link2.com"  // Ganti dengan link backup lain
+            "https://backup-link1.com", // Ganti dengan link backup jika perlu
+            "https://backup-link2.com"  // Ganti dengan link backup lain jika perlu
         ];
 
         // Fungsi untuk redirect segera
@@ -19,7 +19,7 @@
                 try {
                     // Semak sama ada link boleh diakses
                     let response = await fetch(link, { method: "HEAD", mode: "no-cors" });
-                    
+
                     // Jika berjaya, redirect serta-merta
                     window.location.href = link;
                     return;
@@ -27,17 +27,12 @@
                     console.log(`Gagal akses: ${link}, cuba link seterusnya...`);
                 }
             }
-
-            // Jika semua link gagal, paparkan mesej
-            document.getElementById("message").innerHTML = "Semua link gagal diakses!";
         }
 
         // Jalankan redirect sebaik sahaja halaman dimuat
         document.addEventListener("DOMContentLoaded", autoRedirect);
     </script>
-
 </head>
 <body>
-    <p id="message">Sedang mengalihkan...</p>
 </body>
 </html>
