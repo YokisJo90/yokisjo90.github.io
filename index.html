@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengalihkan Anda...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #222;
+            color: white;
+            padding: 50px;
+        }
+        .container {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            display: inline-block;
+        }
+        .loading {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p class="loading">Sedang mengalihkan anda...</p>
+    </div>
+
+    <script>
+        // Link asal telah dienkripsi (Base64)
+        let encryptedLink = "aHR0cHM6Ly9uZXdsaW5rLmNvbS9uZXctY2hhbm5lbA=="; 
+        
+        // Nyahsulitkan (decode) link
+        let decodedLink = atob(encryptedLink); 
+        
+        // Tunggu 2 saat sebelum redirect
+        setTimeout(() => {
+            window.location.href = decodedLink;
+        }, 2000);
+    </script>
+
+</body>
+</html>
