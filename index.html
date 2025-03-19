@@ -3,17 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
+    <title>Redirect...</title>
 
     <script>
-        // Gantikan URL di address bar dengan URL asal (tanpa perubahan)
-        history.replaceState(null, "", "https://istqmhtv.net/Expired/silarenew");
+        // Senarai link utama dan alternatif jika link berubah
+        let links = [
+            "https://istqmhtv.net/Expired/silarenew",
+            "https://backup-link1.com", // Ganti dengan link backup
+            "https://backup-link2.com"  // Ganti dengan link backup lain
+        ];
 
-        // Redirect serta-merta ke link baru
-        window.location.replace("https://www.volkswagen.com.my/"); // Ganti dengan link sebenar
+        // Fungsi untuk redirect segera
+        async function autoRedirect() {
+            for (let link of links) {
+                try {
+                    // Semak sama ada link boleh diakses
+                    let response = await fetch(link, { method: "HEAD", mode: "no-cors" });
+                    
+                    // Jika berjaya, redirect serta-merta
+                    window.location.href = link;
+                    return;
+                } catch (error) {
+                    console.log(`Gagal akses: ${link}, cuba link seterusnya...`);
+                }
+            }
+
+            // Jika semua link gagal, paparkan mesej
+            document.getElementById("message").innerHTML = "Semua link gagal diakses!";
+        }
+
+        // Jalankan redirect sebaik sahaja halaman dimuat
+        document.addEventListener("DOMContentLoaded", autoRedirect);
     </script>
 
 </head>
 <body>
+    <p id="message">Sedang mengalihkan...</p>
 </body>
 </html>
